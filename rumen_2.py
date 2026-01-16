@@ -83,7 +83,7 @@ model=CNN().to(device)#创建模型
 criterion = nn.CrossEntropyLoss()  # 多分类交叉熵损失
 optimizer = optim.SGD(model.parameters(), lr=0.003, momentum=0.9)#优化
 
-epochs=10
+epochs=50
 train_loss=[]#记录损失值
 model.train()#训练模式
 for epoch in range(epochs):

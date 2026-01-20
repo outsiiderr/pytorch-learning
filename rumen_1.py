@@ -38,7 +38,7 @@ class SimpleNN(nn.Module):
         super().__init__()
         self.fc1=nn.Linear(7,100)
         self.fc2=nn.Linear(100,50)
-        self.fc3=nn.Linear(50,1)
+        self.fc3=nn.Linear(50,50)
 
     def forward(self,x):
         x=torch.relu(self.fc1(x))
@@ -79,16 +79,3 @@ plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.grid(True)
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-

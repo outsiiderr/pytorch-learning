@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 
 device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-content_image = Image.open(r'F:\data\content_style\街景.jpg')
-style_image=Image.open(r'F:\data\content_style\星空.jpg')#导入图片
+content_image = Image.open(r'C:\Users\Administrator\Desktop\test\jinmen.jpg')
+style_image=Image.open(r'C:\Users\Administrator\Desktop\test\fushihui.jpg')#导入图片
 
 rgb_mean=torch.tensor([0.485, 0.456, 0.406]).to(device)
 rgb_std=torch.tensor([0.229, 0.224, 0.225]).to(device)
@@ -151,7 +151,7 @@ _,style_y=get_style(image_shape,device)#不会用到style_x，因此忽略
 output,loss=train(content_x,content_y,style_y,lr=1.0,lr_decay_epoch=10,epochs=40)
 output_image=postprocess(output)
 
-output_image.save(r"F:\data\content_style\结果\3.jpg")
+output_image.save(r"C:\Users\Administrator\Desktop\test\output\output1.jpg")
 plt.figure(figsize=(10,8))
 plt.plot(loss)
 plt.xlabel('Epoch')

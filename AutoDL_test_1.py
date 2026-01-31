@@ -140,15 +140,15 @@ def train(x,content_y,style_y,lr,lr_decay_epoch,epochs):
         loss_l=optimizer.step(closure)
         loss.append(loss_l.item())
         scheduler.step()
-        if(epoch%10==0):
+        if(epoch%1==0):
             print('epoch=',epoch,'loss=',loss_l.item())
     return x,loss
 
 #初始化合成图像
-image_shape=(500,750)
+image_shape=(1200,1800)
 content_x,content_y=get_content(image_shape,device)
 _,style_y=get_style(image_shape,device)#不会用到style_x，因此忽略
-output,loss=train(content_x,content_y,style_y,lr=1.0,lr_decay_epoch=10,epochs=40)
+output,loss=train(content_x,content_y,style_y,lr=1.0,lr_decay_epoch=10,epochs=80)
 output_image=postprocess(output)
 
 output_image.save(r"C:\Users\Administrator\Desktop\test\output\output1.jpg")

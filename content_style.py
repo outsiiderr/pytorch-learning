@@ -148,7 +148,7 @@ def train(x,content_y,style_y,lr,lr_decay_epoch,epochs):
 image_shape=(500,750)
 content_x,content_y=get_content(image_shape,device)
 _,style_y=get_style(image_shape,device)#不会用到style_x，因此忽略
-output,loss=train(content_x,content_y,style_y,lr=1.0,lr_decay_epoch=10,epochs=30)
+output,loss=train(content_x,content_y,style_y,lr=1.0,lr_decay_epoch=10,epochs=40)
 output_image=postprocess(output)
 
 output_image.save(r"F:\data\content_style\结果\3.jpg")

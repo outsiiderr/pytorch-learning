@@ -7,7 +7,7 @@ from torch import nn
 from PIL import Image
 import torch.optim as optim
 from torch.optim.lr_scheduler import StepLR
-from torch.optim import LBFGSe
+from torch.optim import LBFGS
 import matplotlib.pyplot as plt
 
 device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -21,7 +21,8 @@ rgb_std=torch.tensor([0.229, 0.224, 0.225]).to(device)
 #定义预处理
 def preprocess(img,image_shape):
     transform = torchvision.transforms.Compose([
-        torchvision.transforms.Resize(image_shape),
+        torchvision.transforms.Resize(max(image_shape)),# 第一步：等比例缩放。
+        torchvision.transforms.CenterCrop(image_shape),# 第二步：中心裁剪。
         torchvision.transforms.ToTensor(),
         torchvision.transforms.Normalize(mean=rgb_mean, std=rgb_std)])
     return transform(img).unsqueeze(0).to(device)#在最前面新增加批次维度
